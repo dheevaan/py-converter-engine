@@ -1,9 +1,9 @@
-import pypandoc
-from fastapi import UploadFile
+from bs4 import BeautifulSoup
 
-async def html_to_docx(file=str):
-    res = pypandoc.convert_file(source = f"py-converter-engine/example.docx", format="html", to="docx")
-    assert res == "berhasil"
-
-def halo():
-    print("halo")
+async def html_to_docx():
+    
+    with open("./processing/example2.html", "r") as f:
+        contens = f.read()
+        
+        soup = str(BeautifulSoup(contens, "lxml"))
+        return soup
